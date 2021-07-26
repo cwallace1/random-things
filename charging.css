@@ -30,7 +30,7 @@ body {
 }
 
 .pulsing {
-	animation: pulse 2s infinite, gravity cubic-bezier(0.84, -0.08, 0.73, 0.75) 5s 1;
+	animation: pulse 2s infinite, gravity cubic-bezier(0, 0.09, 0.71, -.1) 2.5s 1;
 	background:  url(spark.gif);
 	background-position:  center center;
 	background-repeat:  no-repeat;

@@ -38,8 +38,8 @@ function sparkle() {
 // function for randomized numbers
 function randomization(options) {
 	let inc = typeof(options)==="object" && options.hasOwnProperty("inc") ? options.inc : 1;
-	let max = typeof(options)==="object" && options.hasOwnProperty("max") + inc ? options.max : 2;
-	let min = typeof(options)==="object" && options.hasOwnProperty("min") + inc ? options.min : 0;
-	let ran = (Math.floor(Math.random()*((max-min)/inc))*inc+min);
+	let max = typeof(options)==="object" && options.hasOwnProperty("max") ? options.max : 2;
+	let min = typeof(options)==="object" && options.hasOwnProperty("min") ? options.min : 0;
+	let ran = (Math.floor(Math.random()*((max-min + inc)/inc))*inc+min);
 	return ran;
 }
