@@ -31,13 +31,22 @@ body {
 
 .pulsing {
 	animation: pulse 2s infinite, gravity cubic-bezier(0, 0.09, 0.71, -.1) 2.5s 1;
+	position: absolute;
+	transform: rotate(var(--rotate));
+	transform-origin:  center center;
+}
+
+.pulsing:before {
 	background:  url(spark.gif);
 	background-position:  center center;
 	background-repeat:  no-repeat;
 	background-size: contain;
-	margin-left: var(--left);
+	content:  "";
+	height:  100%;
+	left: 0;
 	position: absolute;
-	transform: rotate(var(--rotate));
+	top: 0;
+	width:  100%;
 }
 
 @keyframes pulse {

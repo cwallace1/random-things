@@ -11,7 +11,7 @@ let charging = document.getElementsByClassName('charging')[0];
 		sparkle();
 		if(i--) chargingUp(i);
 	}, randomization(timeOpt));
-})(0)
+})(1)
 
 // function for each charging sparkle
 function sparkle() {
@@ -31,7 +31,7 @@ function sparkle() {
 		inc: 15
 	}
 	spark.className = "pulsing";
-	spark.style = "--top: "+randomization(sparkPosOpt)+"vw; --left: "+randomization(sparkPosOpt)+"vw; --direction: "+(randomization()>0?1:-1)+"; --intensity: ."+randomization(sparkIntOpt)+"; --rotate: "+randomization(sparkRotOpt)+";";
+	spark.style = "--top: "+randomization(sparkPosOpt)+"vw; --left: "+randomization(sparkPosOpt)+"vw; --direction: "+(randomization()>0?1:-1)+"; --intensity: ."+randomization(sparkIntOpt)+"; --rotate: "+randomization(sparkRotOpt)+"deg;";
 	charging.append(spark);
 }
 
