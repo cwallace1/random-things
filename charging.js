@@ -37,9 +37,9 @@ function sparkle() {
 
 // function for randomized numbers
 function randomization(options) {
-	let max = typeof(options)==="object" && options.hasOwnProperty("max") + 1 ? options.max : 2;
-	let min = typeof(options)==="object" && options.hasOwnProperty("min") + 1 ? options.min : 0;
 	let inc = typeof(options)==="object" && options.hasOwnProperty("inc") ? options.inc : 1;
+	let max = typeof(options)==="object" && options.hasOwnProperty("max") + inc ? options.max : 2;
+	let min = typeof(options)==="object" && options.hasOwnProperty("min") + inc ? options.min : 0;
 	let ran = (Math.floor(Math.random()*((max-min)/inc))*inc+min);
 	return ran;
 }
