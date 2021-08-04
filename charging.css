@@ -30,110 +30,109 @@ body {
 	margin: 0 auto;
 }
 
+.charging:before {
+	counter-reset: charged var(--charged);
+	content: "Content is " counter(charged) "% loaded.";
+	position: absolute;
+	top: calc(50vh - 100px);
+	z-index: -1;
+}
+
+.charging:after {
+	background: linear-gradient(to right, var(--white) 0%, var(--white) calc(var(--charged) * 1%), var(--black) calc(var(--charged) * 1%), var(--black) 100%);
+	border: 1px solid var(--yellow);
+	border-radius: 25px;
+	bottom: calc(50vh - 100px);
+	content: "";
+	height: 25px;
+	position:  absolute;
+	transition:  all 1s ease-in-out;
+	width: 50vw;
+	z-index: -1;
+}
+
 .pulsing {
-	animation: pulse 2s infinite, gravity ease-in 2.5s 1;
+	animation: pulse 2s infinite, gravity ease-in 2.5s infinite;
 	position: absolute;
 	transform: rotate(var(--rotate));
-	transform-origin:  center center;
+	transform-origin: center center;
 }
 
 .pulsing:before {
-	animation:  gravity-up ease-out 2.5s 1;
-	background:  url(spark.gif);
-	background-position:  center center;
-	background-repeat:  no-repeat;
+	animation: gravity-up ease-out 2.5s infinite;
+	background: url(spark.gif);
+	background-position: center center;
+	background-repeat: no-repeat;
 	background-size: contain;
-	content:  "";
-	height:  100%;
+	content: "";
+	height: 100%;
 	left: 0;
 	position: absolute;
 	top: 0;
-	width:  100%;
+	width: 100%;
 }
 
 @keyframes pulse {
 	0% {
 		height: calc(2vw * (1 + var(--intensity)));
 		width: calc(2vw * (1 + var(--intensity)));
-		margin-left: calc((-1vw + var(--left)) * (1 + var(--intensity))/10);
-		margin-top: calc((-1vw + var(--top)) * (1 + var(--intensity))/10);
 	}
 	10% {
 		height: calc(4vw * (1 + var(--intensity)));
 		width: calc(4vw * (1 + var(--intensity)));
-		margin-left: calc((-2vw + var(--left)) * (1 + var(--intensity))/10);
-		margin-top: calc((-2vw + var(--top)) * (1 + var(--intensity))/10);
 	}
 	15% {
 		height: calc(4.4vw * (1 + var(--intensity)));
 		width: calc(4.4vw * (1 + var(--intensity)));
-		margin-left: calc((-2.2vw + var(--left)) * (1 + var(--intensity))/10);
-		margin-top: calc((-2.2vw + var(--top)) * (1 + var(--intensity))/10);
 	}
 	25% {
 		height: calc(2vw * (1 + var(--intensity)));
 		width: calc(2vw * (1 + var(--intensity)));
-		margin-left: calc((-1vw + var(--left)) * (1 + var(--intensity))/10);
-		margin-top: calc((-1vw + var(--top)) * (1 + var(--intensity))/10);
 	}
 	50% {
 		height: calc(4.4vw * (1 + var(--intensity)));
 		width: calc(4.4vw * (1 + var(--intensity)));
-		margin-left: calc((-2.2vw + var(--left)) * (1 + var(--intensity))/10);
-		margin-top: calc((-2.2vw + var(--top)) * (1 + var(--intensity))/10);
 	}
 	55% {
 		height: calc(4vw * (1 + var(--intensity)));
 		width: calc(4vw * (1 + var(--intensity)));
-		margin-left: calc((-2vw + var(--left)) * (1 + var(--intensity))/10);
-		margin-top: calc((-2vw + var(--top)) * (1 + var(--intensity))/10);
 	}
 	65% {
 		height: calc(2vw * (1 + var(--intensity)));
 		width: calc(2vw * (1 + var(--intensity)));
-		margin-left: calc((-1vw + var(--left)) * (1 + var(--intensity))/10);
-		margin-top: calc((-1vw + var(--top)) * (1 + var(--intensity))/10);
 	}
 	80% {
 		height: calc(4vw * (1 + var(--intensity)));
 		width: calc(4vw * (1 + var(--intensity)));
-		margin-left: calc((-2vw + var(--left)) * (1 + var(--intensity))/10);
-		margin-top: calc((-2vw + var(--top)) * (1 + var(--intensity))/10);
 	}
 	85% {
 		height: calc(4.4vw * (1 + var(--intensity)));
 		width: calc(4.4vw * (1 + var(--intensity)));
-		margin-left: calc((-2.2vw + var(--left)) * (1 + var(--intensity))/10);
-		margin-top: calc((-2.2vw + var(--top)) * (1 + var(--intensity))/10);
 	}
 	95% {
 		height: calc(4vw * (1 + var(--intensity)));
 		width: calc(4vw * (1 + var(--intensity)));
-		margin-left: calc((-2vw + var(--left)) * (1 + var(--intensity))/10);
-		margin-top: calc((-2vw + var(--top)) * (1 + var(--intensity))/10);
 	}
 	100% {
 		height: calc(2vw * (1 + var(--intensity)));
 		width: calc(2vw * (1 + var(--intensity)));
-		margin-left: calc((-1vw + var(--left)) * (1 + var(--intensity))/10);
-		margin-top: calc((-1vw + var(--top)) * (1 + var(--intensity))/10);
 	}
 }
 
 @keyframes gravity {
 	0% {
-		margin-left: calc((-1vw + var(--left)) * (1 + var(--intensity)));
+		transform: translateX(var(--left)) rotate(var(--rotate));
 	}
 	100% {
-		margin-left: calc((-1vw + var(--left)) * (1 + var(--intensity))/10);
+		transform: translateX(calc(2vw * (1 + var(--intensity)))/-2) rotate(var(--rotate));
 	}
 }
 
 @keyframes gravity-up {
 	0% {
-		margin-top: calc((-1vw + var(--top)) * (1 + var(--intensity)));
+		transform: translateY(var(--top));
 	}
 	100% {
-		margin-top: 0;
+		transform: translateY(calc(2vh * (1 + var(--intensity)))/-2);
 	}
 }

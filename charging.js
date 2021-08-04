@@ -1,6 +1,6 @@
 // set some variables
-let charging = document.getElementsByClassName('charging')[0];
-let buildUp = 10;
+let charging = document.getElementsByClassName('charging')[0]
+let buildUp = 25;
 let buildPiece = 100/buildUp;
 
 // initialize main charging sequence
@@ -11,14 +11,14 @@ let buildPiece = 100/buildUp;
 		inc: 50
 	}
 	setTimeout(function() {
-		sparkle();
-		if(i--) chargingUp(i);
-	}, randomization(timeOpt));
+		sparkle()
+		if(i--) chargingUp(i)
+	}, randomization(timeOpt))
 })(buildUp-1)
 
 // function for each charging sparkle
 function sparkle() {
-	let spark = document.createElement("div");
+	let spark = document.createElement("div")
 	let sparkPosOpt = {
 		max: 20,
 		min: -20,
@@ -33,21 +33,21 @@ function sparkle() {
 		min: -360,
 		inc: 15
 	}
-	spark.className = "pulsing";
-	spark.style = "--top: "+randomization(sparkPosOpt)+"vw; --left: "+randomization(sparkPosOpt)+"vw; --direction: "+(randomization()>0?1:-1)+"; --intensity: ."+randomization(sparkIntOpt)+"; --rotate: "+randomization(sparkRotOpt)+"deg;";
-	charging.append(spark);
-	setTimeout(function() { 
-		spark.remove();
+	spark.className = "pulsing"
+	spark.style = "--top: "+randomization(sparkPosOpt)+"vw; --left: "+randomization(sparkPosOpt)+"vw; --direction: "+(randomization()>0?1:-1)+"; --intensity: ."+randomization(sparkIntOpt)+"; --rotate: "+randomization(sparkRotOpt)+"deg;"
+	charging.append(spark)
+	setTimeout(function() {
+		spark.remove()
 		let percentage = document.documentElement
-		percentage.style.setProperty("--charged", parseInt(getComputedStyle(percentage).getPropertyValue("--charged"))+buildPiece);
+		percentage.style.setProperty("--charged", parseInt(getComputedStyle(percentage).getPropertyValue("--charged"))+buildPiece)
 	}, 5000)
 }
 
 // function for randomized numbers
 function randomization(options) {
-	let inc = typeof(options)==="object" && options.hasOwnProperty("inc") ? options.inc : 1;
-	let max = typeof(options)==="object" && options.hasOwnProperty("max") ? options.max : 2;
-	let min = typeof(options)==="object" && options.hasOwnProperty("min") ? options.min : 0;
-	let ran = (Math.floor(Math.random()*((max-min + inc)/inc))*inc+min);
-	return ran;
+	let inc = typeof(options)==="object" && options.hasOwnProperty("inc") ? options.inc : 1
+	let max = typeof(options)==="object" && options.hasOwnProperty("max") ? options.max : 2
+	let min = typeof(options)==="object" && options.hasOwnProperty("min") ? options.min : 0
+	let ran = (Math.floor(Math.random()*((max-min + inc)/inc))*inc+min)
+	return ran
 }
