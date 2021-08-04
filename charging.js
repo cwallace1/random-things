@@ -1,4 +1,7 @@
+// set some variables
 let charging = document.getElementsByClassName('charging')[0];
+let buildUp = 10;
+let buildPiece = 100/buildUp;
 
 // initialize main charging sequence
 (function chargingUp(i) {
@@ -11,7 +14,7 @@ let charging = document.getElementsByClassName('charging')[0];
 		sparkle();
 		if(i--) chargingUp(i);
 	}, randomization(timeOpt));
-})(1)
+})(buildUp-1)
 
 // function for each charging sparkle
 function sparkle() {
@@ -33,6 +36,11 @@ function sparkle() {
 	spark.className = "pulsing";
 	spark.style = "--top: "+randomization(sparkPosOpt)+"vw; --left: "+randomization(sparkPosOpt)+"vw; --direction: "+(randomization()>0?1:-1)+"; --intensity: ."+randomization(sparkIntOpt)+"; --rotate: "+randomization(sparkRotOpt)+"deg;";
 	charging.append(spark);
+	setTimeout(function() { 
+		spark.remove();
+		let percentage = document.documentElement
+		percentage.style.setProperty("--charged", parseInt(getComputedStyle(percentage).getPropertyValue("--charged"))+buildPiece);
+	}, 5000)
 }
 
 // function for randomized numbers

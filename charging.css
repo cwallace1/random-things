@@ -2,6 +2,7 @@
 	--white: #22aabb;
 	--black: #333333;
 	--yellow: #e09088;
+	--charged: 0;
 }
 
 body {
@@ -30,13 +31,14 @@ body {
 }
 
 .pulsing {
-	animation: pulse 2s infinite, gravity cubic-bezier(0, 0.09, 0.71, -.1) 2.5s 1;
+	animation: pulse 2s infinite, gravity ease-in 2.5s 1;
 	position: absolute;
 	transform: rotate(var(--rotate));
 	transform-origin:  center center;
 }
 
 .pulsing:before {
+	animation:  gravity-up ease-out 2.5s 1;
 	background:  url(spark.gif);
 	background-position:  center center;
 	background-repeat:  no-repeat;
@@ -121,14 +123,17 @@ body {
 @keyframes gravity {
 	0% {
 		margin-left: calc((-1vw + var(--left)) * (1 + var(--intensity)));
-		margin-top: calc((-1vw + var(--top)) * (1 + var(--intensity)));
-	}
-	15% {
-		margin-left: calc((-1vw + var(--left)) * (1 + var(--intensity)));
-		margin-top: calc((-1vw + var(--top)) * (1 + var(--intensity)));
 	}
 	100% {
 		margin-left: calc((-1vw + var(--left)) * (1 + var(--intensity))/10);
-		margin-top: calc((-1vw + var(--top)) * (1 + var(--intensity))/10);
+	}
+}
+
+@keyframes gravity-up {
+	0% {
+		margin-top: calc((-1vw + var(--top)) * (1 + var(--intensity)));
+	}
+	100% {
+		margin-top: 0;
 	}
 }
