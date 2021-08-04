@@ -1,10 +1,19 @@
 // set some variables
-let charging = document.getElementsByClassName('charging')[0]
+let percentage = document.documentElement;
+let charging = document.getElementById("void");
 let buildUp = 25;
 let buildPiece = 100/buildUp;
+let button = document.getElementById("chargeIt");
+
+button.onclick = function() {
+	percentage.style.setProperty("--charged", 0);
+	buildUp = document.getElementById("numero").value;
+	buildPiece = 100/buildUp;
+	chargingUp(buildUp-1);
+}
 
 // initialize main charging sequence
-(function chargingUp(i) {
+function chargingUp(i) {
 	let timeOpt = {
 		max: 500,
 		min: 250,
@@ -14,7 +23,7 @@ let buildPiece = 100/buildUp;
 		sparkle()
 		if(i--) chargingUp(i)
 	}, randomization(timeOpt))
-})(buildUp-1)
+}
 
 // function for each charging sparkle
 function sparkle() {
@@ -38,9 +47,8 @@ function sparkle() {
 	charging.append(spark)
 	setTimeout(function() {
 		spark.remove()
-		let percentage = document.documentElement
 		percentage.style.setProperty("--charged", parseInt(getComputedStyle(percentage).getPropertyValue("--charged"))+buildPiece)
-	}, 5000)
+	}, 2750)
 }
 
 // function for randomized numbers

@@ -7,7 +7,16 @@
 	<meta content="spark generates oustide of ring. circles in towards ring while pulsing. ">
 </head>
 <body>
-	<div class="charging"><p>&cir;</p></div>
+	<div class="charging">
+		<label for="numero">How many sparks?</label>
+		<input type="number" id="numero" value="25">
+		<button type="submit" id="chargeIt">Charge It Up!</button>
+		<p id="percentage">Content is <span></span>% loaded.</p>
+		<div id="void">
+			<p>&cir;</p>
+		</div>
+		<div id="bar"></div>
+	</div>
 	<script src="charging.js"></script>
 </body>
 </html>
